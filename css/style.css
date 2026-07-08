@@ -30,17 +30,6 @@
   overflow: hidden;
   position: relative; /* КРИТИЧЕСКИ ВАЖНО: без этого текст улетит в угол экрана */
 }
-
-/* 2. Позиционируем блок с текстом поверх картинки */
-.banner-content {
-  position: absolute;
-  top: 50%;
-  right: 10%;          /* Прижимаем блок к правому краю с небольшим отступом 10% */
-  transform: translateY(-50%); /* Центрируем только по вертикали */
-  text-align: right;   /* Выравниваем сами строчки текста по правому краю */
-}
-
-
 /* 3. Оформляем сам текст */
 .banner-title {
   font-family: 'Open Sans', sans-serif;
@@ -471,21 +460,16 @@
   color: #8e8e8e;
   text-decoration: none;
 }
-/* МЕДИА-ЗАПРОС: включается только на экранах смартфонов */
+.banner-content {
+  position: absolute;
+  top: 50%;
+  right: 15%;                  /* Прижимаем текст к правому краю */
+  left: auto;                  /* Сбрасываем старое выравнивание по центру */
+  transform: translateY(-50%); /* Центрируем только по вертикали */
+  text-align: right;           /* Выравниваем строчки текста по правому боку */
+}
+
 @media (max-width: 768px) {
-  
-  /* 1. Главный баннер уменьшается и текст встает по центру */
-  .banner-container {
-    height: 360px;
-  }
-  
-  .banner-content {
-    right: auto;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    text-align: center;
-  }
 
   /* 2. Карточки очков встают друг под друга */
   .categories-grid {
@@ -525,16 +509,3 @@
     justify-content: center; 
   }
 }
-  /* Уменьшаем высоту главного баннера на телефоне */
-  .banner-container {
-    height: 360px;
-  }
-  
-  /* Сдвигаем текст баннера по центру на мобилках */
-  .banner-content {
-    right: auto;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    text-align: center;
-  }
