@@ -1,0 +1,538 @@
+/* open-sans-regular - latin */
+@import url('https://googleapis.com');
+
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/open-sans-v44-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* open-sans-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/open-sans-v44-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* Заставляем картинку красиво заполнить этот блок */
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Картинка аккуратно подгонится под размеры без искажений */
+}
+/* 1. Говорим контейнеру, что он теперь главный ориентир для текста */
+.banner-container {
+  max-width: 100%;
+  height: 584px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative; /* КРИТИЧЕСКИ ВАЖНО: без этого текст улетит в угол экрана */
+}
+
+/* 2. Позиционируем блок с текстом поверх картинки */
+.banner-content {
+  position: absolute;
+  top: 50%;          /* Сдвигаем на центр по вертикали */
+  right: 10%;         /* Отодвигаем от правого края экрана */
+  transform: translateY(-50%); /* Идеально выравниваем по центру вертикали */
+}
+
+/* 3. Оформляем сам текст */
+.banner-title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;              /* В Figma указано Weight: 400 (Regular) */
+  font-size: 15px;               /* Точный размер из Figma */
+  line-height: 1;                /* Line height: 100% */
+  letter-spacing: 2.25px;        /* Тот самый межбуквенный интервал */
+  color: #000000;                /* Hex: #000000 */
+  text-transform: uppercase;      /* Case: Uppercase */
+}
+/* Главная обертка для всего меню */
+.main-header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column; /* Элементы теперь выстраиваются сверху вниз */
+}
+
+/* Стили для новой черной полосы */
+.top-bar {
+  width: 100%;
+  background-color: #000000;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.top-bar-text {
+  font-family: 'Open Sans', sans-serif;
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* Новая обертка для меню, чтобы ссылки снова разошлись по краям */
+.nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+  letter-spacing: 1px;
+  padding: 5px 0; /* Убрали боковые паддинги для ровной линии */
+  position: relative; /* Важно для позиционирования линии */
+}
+
+/* Создаем невидимую линию под ссылкой */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #000000;
+  transform: scaleX(0); /* Изначально линия сжата до 0 */
+  transform-origin: right;
+  transition: transform 0.3s ease; /* Скорость анимации линии */
+}
+
+/* Анимация линии при наведении */
+.nav-link:hover::after {
+  transform: scaleX(1); /* Линия разворачивается на всю ширину */
+  transform-origin: left;
+}
+
+/* 1. Включаем Flexbox для сетки карточек */
+.categories-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 40px 0;
+   max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 2. Настройки самой карточки */
+.category-card {
+  flex: 1;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+  /* Добавляемtransition для всей карточки */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+/* Эффект при наведении на всю карточку */
+.category-card:hover {
+  transform: translateY(-8px); /* Карточка плавно приподнимается на 8 пикселей вверх */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05); /* Появляется очень мягкая, дорогая тень */
+}
+
+
+/* 3. Ограничиваем размеры коробки с картинкой */
+.category-img-box {
+  width: 100%;
+  height: 450px; /* Высота подгонится под макет */
+  overflow: hidden;
+}
+
+/* 4. Заставляем картинку красиво заполнить блок */
+.category-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-img {
+  transform: scale(1.02);
+}
+
+/* 5. Стили текста под картинкой */
+.category-name {
+   font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.info-title {
+   font-family: 'Roboto', sans-serif;
+  font-weight: 400;              /* Тонкое начертание из Figma */
+  font-size: 30px;               /* Точный размер из Figma */
+  line-height: 1.2;
+  letter-spacing: 2.25px;        /* Наш фирменный межбуквенный интервал */
+  color: #000000;
+  text-transform: uppercase;      /* Все буквы заглавные */
+  text-align: center;            /* Выравнивание по центру */
+  margin-top: 60px;              /* Отступ сверху от большого баннера */
+  margin-bottom: 40px;           /* Отступ снизу до карточек с очками */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Фиксированная плашка в левом углу */
+/* Убираем лишние рамки и тени, делаем как в Figma */
+.cookie-frame {
+  /* Меняем fixed на absolute, чтобы плашка привязалась к контенту */
+  position: absolute; 
+  
+  left: 20px;          
+  top: 710px;          /* Меняем bottom на точный отступ сверху из вашей Figma (Top: 718px) */
+  display: flex;
+  align-items: center;
+  gap: 10px;           
+  background: transparent; 
+  box-shadow: none;    
+  z-index: 10;       
+  cursor: pointer;
+}
+
+
+/* Настройки иконки */
+.cookie-icon {
+  width: 24px;         
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Шрифт Rubik из Figma */
+.cookie-text {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;    
+  font-size: 14px;     
+  line-height: 22.5px; 
+  color: #000000;
+}
+/* Контейнер для всей новой секции */
+.icons-section {
+  display: block;    /* КРИТИЧЕСКИ ВАЖНО: отменяет выстраивание в одну строку */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px 20px;
+}
+
+
+/* Коробка для баннера с относительным позиционированием */
+.icons-banner-box {
+  width: 100%;
+  height: 480px; 
+  position: relative;
+  overflow: hidden;
+  display: flex; /* ДОБАВЬТЕ ЭТУ СТРОКУ, она уберет микро-зазор под баннером */
+}
+
+
+.icons-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Белая плашка с текстом внизу баннера */
+.icons-title-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff; /* Белый фон под текстом */
+  padding: 20px 0;
+  text-align: center;
+}
+
+.icons-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 24px; /* Подберите размер по Figma */
+  color: #000000;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+/* Нижняя строка — картинки делятся поровну и идут сразу под баннером */
+.icons-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; 
+  width: 100%;
+}
+
+/* Изменяем колонку, чтобы элементы внутри шли друг под другом */
+.icons-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрируем ссылку по горизонтали */
+  gap: 15px;           /* Отступ между картинкой и ссылкой */
+}
+
+/* Фиксируем высоту самой картинки, чтобы она не растягивалась из-за появления текста */
+.icons-col .row-img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+
+/* Стили для новых ссылок под картинками */
+.icons-link {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;     /* Размер подберите по макету */
+  color: #000000;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 10px 0;
+  transition: opacity 0.2s ease;
+}
+
+.icons-link:hover {
+  opacity: 0.6;        /* Эффект затухания при наведении */
+}
+
+/* Контейнер футера */
+/* 1. Серый фон на всю ширину экрана */
+.main-footer {
+  width: 100%;
+  background-color: #f9f9f9; 
+  padding: 60px 0 40px 0;    
+}
+
+/* 2. Центрируем блок подписки */
+.newsletter-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 40px;
+  margin: 0 auto 60px auto;
+  max-width: 1200px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.newsletter-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #000000;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 5px;
+  width: 300px;
+}
+
+.newsletter-input {
+  border: none;
+  outline: none;
+  background: transparent; /* Чтобы инпут не был белым квадратом на сером фоне */
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+.newsletter-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* 3. Центрируем и выравниваем сетку ссылок на 4 колонки */
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 0 auto 80px auto;
+  max-width: 1200px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.footer-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.footer-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #8e8e8e;
+  line-height: 1.4;
+}
+
+.footer-link {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #8e8e8e;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  color: #8e8e8e;
+  text-decoration: none;
+  display: inline-block; /* Важно, чтобы трансформация работала */
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* При наведении ссылка плавно меняет цвет на черный и отступает вправо */
+.footer-link:hover {
+  color: #000000;
+  transform: translateX(4px); /* Сдвиг на 4 пикселя вправо */
+}
+
+
+.footer-icons-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.footer-icon-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  color: #8e8e8e;
+}
+
+.footer-icon-link img {
+  width: 20px;
+  height: 20px;
+}
+
+/* 4. Центрируем самую нижнюю строку */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 20px;
+  margin: 40px auto 0 auto;
+  max-width: 1200px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.legal-link, .lang-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #8e8e8e;
+  text-decoration: none;
+}
+/* МЕДИА-ЗАПРОС: включается только на экранах смартфонов */
+@media (max-width: 768px) {
+  
+  /* 1. Главный баннер уменьшается и текст встает по центру */
+  .banner-container {
+    height: 360px;
+  }
+  
+  .banner-content {
+    right: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+  }
+
+  /* 2. Карточки очков встают друг под друга */
+  .categories-grid {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* 3. Картинки коллекций тоже встают друг под друга */
+  .icons-row {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .icons-col {
+    height: 400px;
+  }
+
+  /* 4. Форма подписки перестраивается в колонку */
+  .newsletter-box {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .input-wrapper {
+    width: 100%; 
+  }
+
+  /* 5. Ссылки футера складываются в одну вертикальную ленту */
+  .footer-grid {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .footer-icons-row {
+    justify-content: center; 
+  }
+}
+  /* Уменьшаем высоту главного баннера на телефоне */
+  .banner-container {
+    height: 360px;
+  }
+  
+  /* Сдвигаем текст баннера по центру на мобилках */
+  .banner-content {
+    right: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+  }
