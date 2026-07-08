@@ -508,4 +508,32 @@
   .footer-icons-row {
     justify-content: center; 
   }
+    /* Уменьшаем и выравниваем плашку куки на телефонах */
+  .cookie-frame {
+    position: fixed; /* Прижимаем к экрану, чтобы она не улетала вверх */
+    bottom: 20px;
+    left: 20px;
+    right: 20px; /* Растягиваем аккуратно по ширине телефона */
+    width: auto;
+    padding: 10px 15px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999; /* Чтобы она была поверх картинок */
+  }
+
+  /* Уменьшаем саму иконку Axeptio, чтобы она не была гигантской */
+  .cookie-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  /* Уменьшаем шрифт надписи */
+  .cookie-text {
+    font-size: 12px !important;
+  }
+
 }
