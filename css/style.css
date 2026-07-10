@@ -651,3 +651,343 @@
     font-size: 12px;
   }
 }
+
+/* ======================================================
+   ПЛАВНЫЙ СКРОЛЛ ПО ВСЕЙ СТРАНИЦЕ
+====================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ======================================================
+   АНИМАЦИЯ ХЕДЕРА ПРИ СКРОЛЛЕ
+   (он у тебя absolute + прозрачный, поэтому при скролле
+   вниз добавляем белый фон и тень, чтобы меню не терялось
+   на светлых картинках)
+====================================================== */
+.main-header {
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.main-header.header-scrolled {
+  background-color: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.main-header.header-scrolled .top-bar {
+  /* Прячем чёрную плашку с доставкой при скролле, чтобы хедер стал компактнее */
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.top-bar {
+  max-height: 40px;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+/* ======================================================
+   ВХОДНАЯ АНИМАЦИЯ БАННЕРА (при загрузке страницы)
+====================================================== */
+.banner-img {
+  animation: bannerZoomIn 1.4s ease-out;
+}
+
+@keyframes bannerZoomIn {
+  from {
+    transform: scale(1.08);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.banner-enter {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: bannerTextIn 0.9s ease-out 0.4s forwards;
+}
+
+@keyframes bannerTextIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======================================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ ПРИ СКРОЛЛЕ (.reveal)
+   Управляется через IntersectionObserver в JS —
+   класс .is-visible добавляется, когда элемент попал в экран
+====================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Если у пользователя включена настройка "уменьшить анимацию" — уважаем её */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal,
+  .banner-img,
+  .banner-enter {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ======================================================
+   ДОРАБОТАННЫЕ HOVER-АНИМАЦИИ
+====================================================== */
+
+/* Карточки очков — более плавный и "дорогой" отклик */
+.category-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.08);
+}
+
+.category-name {
+  transition: opacity 0.3s ease;
+}
+
+.category-card:hover .category-name {
+  opacity: 0.6;
+}
+
+/* Иконки коллекции — лёгкое приближение картинки */
+.icons-col .row-img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.icons-col:hover .row-img {
+  transform: scale(1.03);
+}
+
+/* Кнопка отправки формы подписки — приятный отклик при клике */
+.newsletter-btn {
+  transition: transform 0.25s ease;
+}
+
+.newsletter-btn:hover {
+  transform: translateX(3px);
+}
+
+.newsletter-btn:active {
+  transform: scale(0.9);
+}
+
+/* Инпут подписки — подсветка при фокусе */
+.input-wrapper {
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-input:focus ~ .input-wrapper,
+.input-wrapper:focus-within {
+  border-bottom-color: #000000;
+}
+
+/* Плавное появление гамбургер-меню при наведении/фокусе (доступность) */
+.burger-btn:focus-visible,
+.nav-link:focus-visible,
+.mobile-link:focus-visible,
+.footer-link:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 3px;
+}
+
+/* Кнопка гамбургера — лёгкий отклик при нажатии */
+.burger-btn {
+  transition: transform 0.2s ease;
+}
+
+.burger-btn:active {
+  transform: scale(0.9);
+}
+
+/* ======================================================
+   РАСШИРЕННАЯ АДАПТИВНОСТЬ — ПЛАНШЕТЫ (1024px)
+====================================================== */
+@media (max-width: 1024px) {
+  .categories-grid {
+    flex-wrap: wrap;
+  }
+
+  .category-card {
+    flex: 1 1 45%; /* 2 карточки в ряд вместо 4 */
+  }
+
+  .category-img-box {
+    height: 360px;
+  }
+
+  .footer-grid {
+    flex-wrap: wrap;
+    gap: 40px 20px;
+  }
+
+  .footer-col {
+    flex: 1 1 40%; /* 2 колонки вместо 4 */
+  }
+
+  .icons-col .row-img {
+    height: 420px;
+  }
+}
+
+/* ======================================================
+   ПЛАНШЕТЫ / БОЛЬШИЕ ТЕЛЕФОНЫ (768px) — дополняем то,
+   что уже было
+====================================================== */
+@media (max-width: 768px) {
+  .info-title {
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+  }
+
+  .category-img-box {
+    height: 340px;
+  }
+
+  .categories-grid {
+    padding: 30px 20px;
+  }
+
+  .icons-title {
+    font-size: 18px;
+  }
+
+  .icons-banner-box {
+    height: 320px;
+  }
+
+  .newsletter-box {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .footer-col {
+    flex: 1 1 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-icons-row {
+    justify-content: center;
+  }
+}
+
+/* ======================================================
+   МАЛЕНЬКИЕ ТЕЛЕФОНЫ (480px и меньше)
+====================================================== */
+@media (max-width: 480px) {
+  .top-bar-text {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    padding: 0 5px;
+  }
+
+  .banner-container {
+    height: 460px;
+  }
+
+  .banner-content {
+    right: 6%;
+    text-align: right;
+  }
+
+  .banner-title {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .info-title {
+    font-size: 18px;
+  }
+
+  .category-card {
+    flex: 1 1 100%; /* по одной карточке в ряд */
+  }
+
+  .category-img-box {
+    height: 380px;
+  }
+
+  .icons-col {
+    height: auto;
+  }
+
+  .icons-col .row-img {
+    height: 320px;
+  }
+
+  .icons-banner-box {
+    height: 240px;
+  }
+
+  .icons-title {
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  .mobile-menu {
+    width: 85%;
+    padding: 90px 24px;
+  }
+
+  .newsletter-text {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .footer-desc {
+    font-size: 12px;
+  }
+
+  .cookie-frame {
+    padding: 8px 12px;
+  }
+
+  .cookie-text {
+    font-size: 11px !important;
+  }
+}
+
+/* ======================================================
+   ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (360px и меньше — старые/бюджетные телефоны)
+====================================================== */
+@media (max-width: 360px) {
+  .banner-title {
+    font-size: 9px;
+  }
+
+  .info-title {
+    font-size: 16px;
+  }
+
+  .top-bar-text {
+    font-size: 8px;
+  }
+}
