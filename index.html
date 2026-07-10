@@ -7,179 +7,215 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body> <!-- Строка 10: здесь тег ТОЛЬКО открывается -->
+<body>
     <!-- НАЧАЛО МЕНЮ НАВИГАЦИИ -->
     <header class="main-header">
         <div class="top-bar">
             <p class="top-bar-text">Delivery Free at home or in a relay point with no minimum purchase.</p>
         </div>
-        <div class="nav-container"> 
-        <nav class="nav-left">
-            <a href="#" class="nav-link">Eyeglasses</a>
-            <a href="#" class="nav-link">Sunglasses</a>
-            <a href="#" class="nav-link">Accessories</a>
-            <a href="#" class="nav-link">About</a>
-        </nav>
-        
-        <nav class="nav-right">
-            <a href="#" class="nav-link">Our stores</a>
-            <a href="#" class="nav-link">EN</a>
-        </nav>
-    </div> <!-- СТРОКА 26: ЗАКРОЙТЕ ЕГО ЗДЕСЬ -->
-        </nav>
+
+        <div class="nav-container">
+            <nav class="nav-left">
+                <a href="#" class="nav-link">Eyeglasses</a>
+                <a href="#" class="nav-link">Sunglasses</a>
+                <a href="#" class="nav-link">Accessories</a>
+                <a href="#" class="nav-link">About</a>
+            </nav>
+
+            <nav class="nav-right">
+                <a href="#" class="nav-link">Our stores</a>
+                <a href="#" class="nav-link">EN</a>
+            </nav>
+
+            <!-- Кнопка гамбургера — видна только на мобилке -->
+            <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Мобильное меню (выпадает поверх сайта) -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#" class="mobile-link">Eyeglasses</a>
+            <a href="#" class="mobile-link">Sunglasses</a>
+            <a href="#" class="mobile-link">Accessories</a>
+            <a href="#" class="mobile-link">About</a>
+            <a href="#" class="mobile-link">Our stores</a>
+            <a href="#" class="mobile-link">EN</a>
+        </div>
+
+        <!-- Затемнение фона при открытом меню -->
+        <div class="menu-overlay" id="menuOverlay"></div>
     </header>
+
     <div class="banner-container">
         <img src="./img/banner.jpg" alt="Banner" class="banner-img">
         <div class="banner-content">
-        <p class="banner-title">MAKE AN APPOINTMENT <br> IN STORE</p>
+            <p class="banner-title">MAKE AN APPOINTMENT <br> IN STORE</p>
+        </div>
     </div>
-    </div>
-        <!-- ПЛАШКА СОГЛАСИЯ COOKIE -->
+
+    <!-- ПЛАШКА СОГЛАСИЯ COOKIE -->
     <div class="cookie-frame">
         <img src="./img/frame.png" alt="Axeptio Icon" class="cookie-icon">
         <span class="cookie-text">Axeptio consent</span>
     </div>
 
-</body>
-</html>
-
     <div class="info-section">
-    <!-- ДОБАВЛЯЕМ ЭТОТ ЗАГОЛОВОК СЮДА -->
-    <h2 class="info-title">SUSTAINABLE & LOVABLE EYEWEAR</h2>
-    <div class="categories-grid">
-    
-    <!-- Карточка 1 -->
-    <a href="#" class="category-card">
-        <div class="category-img-box">
-            <img src="./img/IMAGE.png" alt="Women's Eyeglasses" class="category-img">
-        </div>
-        <p class="category-name">Women's Eyeglasses</p>
-    </a>
+        <!-- ДОБАВЛЯЕМ ЭТОТ ЗАГОЛОВОК СЮДА -->
+        <h2 class="info-title">SUSTAINABLE & LOVABLE EYEWEAR</h2>
+        <div class="categories-grid">
 
-    <!-- Карточка 2 -->
-    <a href="#" class="category-card">
-        <div class="category-img-box">
-            <img src="./img/IMAGE-1.png" alt="Women's Sunglasses" class="category-img">
-        </div>
-        <p class="category-name">Women's Sunglasses</p>
-    </a>
+            <!-- Карточка 1 -->
+            <a href="#" class="category-card">
+                <div class="category-img-box">
+                    <img src="./img/IMAGE.png" alt="Women's Eyeglasses" class="category-img">
+                </div>
+                <p class="category-name">Women's Eyeglasses</p>
+            </a>
 
-    <!-- Карточка 3 -->
-    <a href="#" class="category-card">
-        <div class="category-img-box">
-            <img src="./img/IMAGE-2.png" alt="Men's Sunglasses" class="category-img">
-        </div>
-        <p class="category-name">Men's Sunglasses</p>
-    </a>
+            <!-- Карточка 2 -->
+            <a href="#" class="category-card">
+                <div class="category-img-box">
+                    <img src="./img/IMAGE-1.png" alt="Women's Sunglasses" class="category-img">
+                </div>
+                <p class="category-name">Women's Sunglasses</p>
+            </a>
 
-    <!-- Карточка 4 -->
-    <a href="#" class="category-card">
-        <div class="category-img-box">
-            <img src="./img/IMAGE-3.png" alt="Men's Eyeglasses" class="category-img">
-        </div>
-        <p class="category-name">Men's Eyeglasses</p>
-    </a>
-    </div> <!-- Закрываем контейнер categories-grid -->
-<!-- НАЧАЛО СЕКЦИИ ICONS COLLECTION -->
-<!-- СЕКЦИЯ ICONS COLLECTION -->
-<section class="icons-section">
-    
-    <!-- Баннер и текст теперь в одной коробке -->
-    <div class="icons-banner-box">
-        <img src="./img/icons-banner.png" alt="Icons Collection Banner" class="icons-banner-img">
-        <div class="icons-title-wrapper">
-            <h2 class="icons-title">ICONS COLLECTION</h2>
-        </div>
-    </div>
+            <!-- Карточка 3 -->
+            <a href="#" class="category-card">
+                <div class="category-img-box">
+                    <img src="./img/IMAGE-2.png" alt="Men's Sunglasses" class="category-img">
+                </div>
+                <p class="category-name">Men's Sunglasses</p>
+            </a>
 
-    <!-- Двухколоночный блок идет сразу под баннером -->
-        <!-- Двухколоночный блок с текстом снизу -->
-    <div class="icons-row">
-        
-        <!-- Левая колонка -->
-        <div class="icons-col">
-            <img src="./img/icon-glasses.png" alt="Glasses Illustration" class="row-img">
-            <a href="#" class="icons-link">BUY ONE GIVE ONE</a>
-        </div>
-    <!-- 1. Форма подписки на рассылку -->
-         <!-- Правая колонка -->
-        <div class="icons-col">
-            <img src="./img/icon-store.png" alt="Jimmy Fairly Store" class="row-img">
-            <a href="#" class="icons-link">BOOK AN APPOINTMENT</a>
-        </div>
+            <!-- Карточка 4 -->
+            <a href="#" class="category-card">
+                <div class="category-img-box">
+                    <img src="./img/IMAGE-3.png" alt="Men's Eyeglasses" class="category-img">
+                </div>
+                <p class="category-name">Men's Eyeglasses</p>
+            </a>
+        </div> <!-- Закрываем контейнер categories-grid -->
 
-    </div> <!-- Строка 110: закрылся icons-row -->
-</section> 
-<!-- Начало футера (Строка 122) -->
-<footer class="main-footer">
+        <!-- СЕКЦИЯ ICONS COLLECTION -->
+        <section class="icons-section">
 
-    <div class="newsletter-box">
-        <p class="newsletter-text">Subscribe to our newsletter.</p>
-        <div class="input-wrapper">
-            <input type="email" placeholder="Your email address" class="newsletter-input">
-            <button class="newsletter-btn">
-                <img src="./img/icon-email.png" alt="Send" class="btn-icon">
-            </button>
-        </div>
-    </div>
-
-    <!-- 2. Сетка ссылок футера (4 колонки) -->
-    <div class="footer-grid">
-        
-        <!-- Колонка 1: Контакты -->
-        <div class="footer-col">
-            <h3 class="footer-title">Contact us.</h3>
-            <p class="footer-desc">Lucas and his team are still there to answer you</p>
-            <div class="footer-icons-row">
-                <a href="#" class="footer-icon-link">
-                    <img src="./img/icon-email.png" alt="Email">
-                    <span>By email</span>
-                </a>
-                <a href="#" class="footer-icon-link">
-                   <img src="./img/icon-help.png" alt="Help">
-                    <span>Help</span>
-                </a>
+            <!-- Баннер и текст теперь в одной коробке -->
+            <div class="icons-banner-box">
+                <img src="./img/icons-banner.png" alt="Icons Collection Banner" class="icons-banner-img">
+                <div class="icons-title-wrapper">
+                    <h2 class="icons-title">ICONS COLLECTION</h2>
+                </div>
             </div>
-        </div>
 
-        <!-- Колонка 2: О нас -->
-        <div class="footer-col">
-            <h3 class="footer-title">About us.</h3>
-            <a href="#" class="footer-link">Find a Store</a>
-            <a href="#" class="footer-link">Join us</a>
-            <a href="#" class="footer-link">Press contact</a>
-        </div>
+            <!-- Двухколоночный блок с текстом снизу -->
+            <div class="icons-row">
 
-        <!-- Колонка 3: Поддержка -->
-        <div class="footer-col">
-            <h3 class="footer-title">Customer care.</h3>
-            <a href="#" class="footer-link">Book an Appointment</a>
-            <a href="#" class="footer-link">Shipping & Returns</a>
-            <a href="#" class="footer-link">Q&As</a>
-        </div>
+                <!-- Левая колонка -->
+                <div class="icons-col">
+                    <img src="./img/icon-glasses.png" alt="Glasses Illustration" class="row-img">
+                    <a href="#" class="icons-link">BUY ONE GIVE ONE</a>
+                </div>
 
-        <!-- Колонка 4: Соцсети -->
-        <div class="footer-col">
-            <h3 class="footer-title">Follow us.</h3>
-            <a href="#" class="footer-link">Instagram</a>
-            <a href="#" class="footer-link">TikTok</a>
-            <a href="#" class="footer-link">Pinterest</a>
-        </div>
+                <!-- Правая колонка -->
+                <div class="icons-col">
+                    <img src="./img/icon-store.png" alt="Jimmy Fairly Store" class="row-img">
+                    <a href="#" class="icons-link">BOOK AN APPOINTMENT</a>
+                </div>
 
-    </div>
+            </div> <!-- закрылся icons-row -->
+        </section>
 
-    <!-- 3. Самая нижняя строка (Legal и Язык) -->
-    <div class="footer-bottom">
-        <a href="#" class="legal-link">Legal</a>
-        <span class="lang-text">EN</span>
-    </div>
+        <!-- Начало футера -->
+        <footer class="main-footer">
 
-</footer>
+            <div class="newsletter-box">
+                <p class="newsletter-text">Subscribe to our newsletter.</p>
+                <div class="input-wrapper">
+                    <input type="email" placeholder="Your email address" class="newsletter-input">
+                    <button class="newsletter-btn">
+                        <img src="./img/icon-email.png" alt="Send" class="btn-icon">
+                    </button>
+                </div>
+            </div>
 
-</div>
-<div class="cookie-frame">
-    <img src="./img/Frame.png" alt="Axeptio Icon" class="cookie-icon">
-    <span class="cookie-text">Axeptio consent</span>
-</div>
-</body> <!-- Перенесите закрывающий тег сюда -->
+            <!-- Сетка ссылок футера (4 колонки) -->
+            <div class="footer-grid">
+
+                <!-- Колонка 1: Контакты -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Contact us.</h3>
+                    <p class="footer-desc">Lucas and his team are still there to answer you</p>
+                    <div class="footer-icons-row">
+                        <a href="#" class="footer-icon-link">
+                            <img src="./img/icon-email.png" alt="Email">
+                            <span>By email</span>
+                        </a>
+                        <a href="#" class="footer-icon-link">
+                            <img src="./img/icon-help.png" alt="Help">
+                            <span>Help</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Колонка 2: О нас -->
+                <div class="footer-col">
+                    <h3 class="footer-title">About us.</h3>
+                    <a href="#" class="footer-link">Find a Store</a>
+                    <a href="#" class="footer-link">Join us</a>
+                    <a href="#" class="footer-link">Press contact</a>
+                </div>
+
+                <!-- Колонка 3: Поддержка -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Customer care.</h3>
+                    <a href="#" class="footer-link">Book an Appointment</a>
+                    <a href="#" class="footer-link">Shipping & Returns</a>
+                    <a href="#" class="footer-link">Q&As</a>
+                </div>
+
+                <!-- Колонка 4: Соцсети -->
+                <div class="footer-col">
+                    <h3 class="footer-title">Follow us.</h3>
+                    <a href="#" class="footer-link">Instagram</a>
+                    <a href="#" class="footer-link">TikTok</a>
+                    <a href="#" class="footer-link">Pinterest</a>
+                </div>
+
+            </div>
+
+            <!-- Самая нижняя строка (Legal и Язык) -->
+            <div class="footer-bottom">
+                <a href="#" class="legal-link">Legal</a>
+                <span class="lang-text">EN</span>
+            </div>
+
+        </footer>
+
+    </div> <!-- закрылся info-section -->
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            burgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        burgerBtn.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Закрываем меню, если кликнули по ссылке внутри него
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    </script>
+</body>
 </html>
